@@ -11,4 +11,7 @@ class User < ApplicationRecord
   
   #[dependent: :destroy] 1:Nの関係において、「1」のデータが削除された場合、関連する「N」のデータも削除される設定
 
+  attachment :profile_image
+  # カラム名（profile_image_id）から_idを除いた名前（profile_image）を記述
+
 end
