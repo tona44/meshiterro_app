@@ -1,7 +1,9 @@
 <!--ユーザープロフィール-->
 <div class="profile-container">
   <h3 class="profile-name"><%= @user.name %></h3>
-  <%= image_tag('IMG_5802.JPG') %>
+  <%= attachment_image_tag @user,:profile_image,:fill,100,100,format:'jpeg',fallback:'no_image.jpg' %>
+  <!-- attachment_image_tag 保存先インスタンス名, :保存先カラム名, :サイズ（横幅,高さ）, 画像拡張子, 代替画像 -->
+  <!-- userモデルがプロフィール画像を保存しているので @user -->
 
   <% if @user.id == current_user.id %>
    <p><%= link_to "プロフィール編集",edit_user_path(@user) %></p>
@@ -18,8 +20,8 @@
    <%= attachment_image_tag post_image,:image %>
   <% end %>
 
-  <p>投稿ユーザー画像:<%= image_tag('sample-author1.jpg') %></p>
-   <!--image_tag('app/assets/imagesに入れている画像を指定できる')-->
+  <p>投稿ユーザー画像:<%= attachment_image_tag post_image.user,:profile_image,:fill,60,60,fallback:"no_image.jpg" %></p>
+   <!--変更前：image_tag('app/assets/imagesに入れている画像jpg')-->
 
   <p>ショップ名:<%= post_image.shop_name %></p>
 

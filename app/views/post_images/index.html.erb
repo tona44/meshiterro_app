@@ -5,8 +5,9 @@
    <%= attachment_image_tag post_image,:image %>
   <% end %>
   
-  <p>投稿ユーザー画像:<%= image_tag('sample-author1.jpg') %></p>
-   <!--image_tag('app/assets/imagesに入れている画像を指定できる')-->
+  <p>投稿ユーザー画像:<%= attachment_image_tag post_image.user,:profile_image,:fill,60,60,fallback:"no_image.jpg" %></p>
+  <!-- attachment_image_tag 保存先インスタンス名, :保存先カラム名, :サイズ（横幅,高さ）, 画像拡張子, 代替画像 -->
+  <!--"post_image.user":プロフィール画像を保持しているのはpost_imageモデルに紐づけられたuserモデル-->
   
   <p>ショップ名:<%= post_image.shop_name %></p>
   

@@ -25,7 +25,6 @@
      <% end %>
    </p>
   <% end %>
-
 </div>
 
 
@@ -34,9 +33,13 @@
 
   <!--投稿済みコメント一覧-->
   <% @post_image.post_comments.each do |post_comment| %>
-   <p><%= image_tag('sample-author1.jpg') %></p>
+   <p><%= attachment_image_tag post_comment.user,:profile_image,:fill,60,60,fallback:"no_image.jpg" %></p>
+   <!-- attachment_image_tag 保存先インスタンス名, :保存先カラム名, :サイズ（横幅,高さ）, 画像拡張子, 代替画像 -->
+   <!--"post_comment.user":プロフィール画像を保持しているのはpost_commentモデルに紐づけられたuserモデル-->
+
    <%= post_comment.user.name %>
    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+
 
    <!--コメント削除機能-->
    <% if post_comment.user == current_user %>
