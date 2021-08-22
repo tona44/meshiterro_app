@@ -10,15 +10,18 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+    <% if user_signed_in? %>  <!--ログイン済みの場合-->
      <li>
        <%= link_to "投稿フォーム",new_post_image_path %>
      </li>
-    
      <li>
        <%= link_to "ログアウト",destroy_user_session_path,method: :delete %>
      </li>
-    <% else %>
+     <li>
+       <%= link_to "マイページ",user_path(current_user.id) %>
+     </li>
+     
+    <% else %>  <!--未ログインの場合-->
      <li>
        <%= link_to "新規登録",new_user_registration_path %>
      </li>
