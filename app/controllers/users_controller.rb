@@ -3,4 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_images = @user.post_images.page(params[:page]).reverse_order  # 個人投稿のみ抽出
   end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
 end
