@@ -12,26 +12,5 @@
 
 
 <!--個人の投稿一覧-->
-<!--app/views/post_images/index.html.erb　の中身をコピーする(@post_imagesの値は異なる)-->
-<% @post_images.each do |post_image| %>
-<div>
-
-  <%= link_to post_image_path(post_image.id) do %>
-   <%= attachment_image_tag post_image,:image %>
-  <% end %>
-
-  <p>投稿ユーザー画像:<%= attachment_image_tag post_image.user,:profile_image,:fill,60,60,fallback:"no_image.jpg" %></p>
-   <!--変更前：image_tag('app/assets/imagesに入れている画像jpg')-->
-
-  <p>ショップ名:<%= post_image.shop_name %></p>
-
-  <p>説明:<%= post_image.caption %></p>
-
-  <p>ユーザーネーム:<%= post_image.user.name %></p>
-
-  <p><%= link_to "#{post_image.post_comments.count}コメント",post_image_path(post_image.id) %> </p>
-
-</div>
-<% end %>
-
-<%= paginate @post_images %>
+<!--app/views/post_images/index.html.erb　の中身をコピーする(@post_imagesの値は異なる) → 部分テンプレート化-->
+<%= render 'post_images/list',post_images: @post_images %>
